@@ -1,0 +1,13 @@
+brand,handle,email,campaign,source,event_type,timestamp,clicks,form_submit,rsvp,attended
+A Very Big Brand,trendwatcher01,trendwatcher01@example.com,Our Red Campaign,instagram_bio,click,2026-05-01,3,1,1,0
+A Very Big Brand,marketmaven22,marketmaven22@example.com,Our Red Campaign,instagram_story,click,2026-05-02,1,0,0,0
+A Very Big Brand,brandfanatic,brandfanatic@example.com,Our Red Campaign,email,attended,2026-05-03,5,1,1,1
+A Very Big Brand,socialscope,socialscope@example.com,Our Blue Campaign,instagram_bio,rsvp,2026-05-04,4,1,1,0
+A Very Big Brand,clickcurious,clickcurious@example.com,Our Blue Campaign,instagram_story,click,2026-05-05,2,0,0,0
+A Very Big Brand,loyalbuyer,loyalbuyer@example.com,Our Blue Campaign,email,attended,2026-05-06,6,1,1,1
+A Very Big Brand,urbanbrowser,urbanbrowser@example.com,Our Green Campaign,instagram_bio,click,2026-05-07,1,0,0,0
+A Very Big Brand,funnelwatch,funnelwatch@example.com,Our Green Campaign,instagram_story,rsvp,2026-05-08,3,1,1,0
+A Very Big Brand,conversionqueen,conversionqueen@example.com,Our Green Campaign,email,form_submit,2026-05-09,2,1,0,0
+A Very Big Brand,retailradar,retailradar@example.com,Our Yellow Campaign,instagram_bio,click,2026-05-10,4,0,0,0
+A Very Big Brand,launchlover,launchlover@example.com,Our Yellow Campaign,email,attended,2026-05-11,7,1,1,1
+A Very Big Brand,adobserver,adobserver@example.com,Our Yellow Campaign,instagram_story,click,2026-05-12,2,0,0,0
