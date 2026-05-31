@@ -4,11 +4,84 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Audience Signal OS</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
+  
   <body>
-    <h1>Dashboard</h1>
-    <p>Upload a CSV and view audience inights, just like that.</p>
+    <nav>
+      <h1>Audience Signal OS</h1>
 
-    <a href="index.html">Back Home</a>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="card">
+        <h2>Audience Dashboard</h2>
+        <p>
+          Upload a CSV and view audience inights, just like that.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Upload CSV</h2>
+        <p>
+          Your file will be processed locally in your browser. Nothing is uploaded or stored.
+        </p>
+
+        <input type="file" id="csvFile" accept=".csv" />
+
+        <button id="loadSample">Use Sample Data</button>
+      </section>
+
+      <section class="metrics">
+        <div class="metric-card">
+          <h3>Total Contacts</h3>
+          <p id="totalContacts">0</p>
+        </div>
+
+        <div class="metric-card">
+          <h3>High Intent</h3>
+          <p id="highIntent">0</p>
+        </div>
+
+        <div class="metric-card">
+          <h3>Converted</h3>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Audience Segments</h2>
+        <canvas id="segmentChart"></canvas>
+      </section>
+
+      <section class="card">
+        <h2>Top Audience Members</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Handle</th>
+              <th>Campaign</th>
+              <th>Score</th>
+              <th>Segment</th>
+              <th>Recommended ACtion</th>
+            </tr>
+          </thead>
+
+          <tbody id="audienceTable"></tbody>
+        </table>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- My own JavaScript files. Will create these later. -->
+  <script src="js/scoring.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
   </body>
 </html>
