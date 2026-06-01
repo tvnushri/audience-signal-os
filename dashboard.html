@@ -21,7 +21,7 @@
       <section class="card">
         <h2>Audience Dashboard</h2>
         <p>
-          Upload a CSV and view audience inights, just like that.
+          Upload a CSV and view audience insights, just like that.
         </p>
       </section>
 
@@ -32,6 +32,8 @@
         </p>
 
         <input type="file" id="csvFile" accept=".csv" />
+
+        <button id="processCsv">Process Uploaded CSV</button>
 
         <button id="loadSample">Use Sample Data</button>
       </section>
@@ -49,30 +51,37 @@
 
         <div class="metric-card">
           <h3>Converted</h3>
+          <p id="converted">0</p>
         </div>
       </section>
 
       <section class="card">
         <h2>Audience Segments</h2>
-        <canvas id="segmentChart"></canvas>
+
+        <div class="chart-wrap">
+          <canvas id="segmentChart"></canvas>
+        </div>
       </section>
 
       <section class="card">
         <h2>Top Audience Members</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Handle</th>
-              <th>Campaign</th>
-              <th>Score</th>
-              <th>Segment</th>
-              <th>Recommended ACtion</th>
-            </tr>
-          </thead>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Handle</th>
+                <th>Campaign</th>
+                <th>Score</th>
+                <th>Segment</th>
+                <th>Recommended Action</th>
+              </tr>
+            </thead>
 
           <tbody id="audienceTable"></tbody>
         </table>
+        </div>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
