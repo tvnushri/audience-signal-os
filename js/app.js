@@ -1,25 +1,37 @@
 const fileInput = document.getElementById("csvFile");
 
+const processCsvButton = document.getElementById("processCsv");
+
 const loadSampleButton = document.getElementById("loadSample");
 
-fileInput.addEventListener("change", handleFileUpload);
+let selectedCsvFile = null;
+
+fileInput.addEventListener("change", function(event) {
+  selectedCsvFile = event.target.files[0];
+});
+
+processCsvButton.addEventListener("click", processUploadedCsv);
 
 loadSampleButton.addEventListener("click", loadSampleData);
 
-function handleFileUpload(event) {
-  const file = event.target.files[0];
-  if (!file) {
+function processUploadedCsv() {
+  if (!selectedCsvFile) {
+    alert("Please choose a CSV file first.");
     return;
   }
 
-Papa.parse(file, {
-  header: true,
+  Papa.parse(selectedCsvFile, {
+    header: true,
+    skipEmptyLines: true,
 
-  skipEmptyLines: true,
+    complete: function(results) {
+      const enrichedData = enrichData(results.data);
+      renderDashboard(enrichedData);
+    },
 
-  complete: function(results) {
-    const enrichedData = enrichData(results.data);
-    renderDashboard(enrichedData);
+    error: function(error) {
+      alert("There was a problem reading your CSV file.");
+      console.error(error);
     }
   });
 }
@@ -29,22 +41,29 @@ function loadSampleData() {
     download: true,
     header: true,
     skipEmptyLines: true,
+
     complete: function(results) {
       const enrichedData = enrichData(results.data);
       renderDashboard(enrichedData);
+    },
+
+    error: function(error) {
+      alert("The sample data could not be loaded. Check that data/sample_campaign_data.csv exists.");
+      console.error(error);
     }
   });
 }
 
 function renderDashboard(data) {
   document.getElementById("totalContacts").textContent = data.length;
+
   const highIntentCount = data.filter(row =>
     row.segment === "High Intent" || row.segment === "Converted / Priority"
   ).length;
 
   const convertedCount = data.filter(row =>
     row.segment === "Converted / Priority"
-  ).length 
+  ).length;
 
   document.getElementById("highIntent").textContent = highIntentCount;
   document.getElementById("converted").textContent = convertedCount;
@@ -61,13 +80,14 @@ function renderTable(data) {
   data.forEach(row => {
     const tr = document.createElement("tr");
 
-    tr.innerHTML = 
+    tr.innerHTML = `
       <td>${row.handle || "Unknown"}</td>
       <td>${row.campaign || "Unknown"}</td>
       <td>${row.audience_score}</td>
       <td>${row.segment}</td>
       <td>${row.recommendation}</td>
-    ;
+    `;
+
     tableBody.appendChild(tr);
   });
 }
